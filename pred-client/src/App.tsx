@@ -1,14 +1,17 @@
-import './App.css'
-import Heroes from './components/heroes/heroes'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {Heroes, Layout} from '@/components';
+import {Home} from '@/pages';
 
 function App() {
   return (
-    <>
-      <div className='background-heroes'>
-        <Heroes />
-      </div>
-      
-    </>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="heroes" element={<Heroes />} />
+        </Routes>
+      </Layout>
+    </Router>
   )
 }
 

@@ -1,7 +1,7 @@
-import axios, { AxiosResponse } from "axios";
-import { useEffect, useState } from "react";
-import { IHero } from "../../models";
-import Hero from "../hero/hero";
+import axios, { AxiosResponse } from 'axios';
+import { useEffect, useState } from 'react';
+import { IHero } from '@/models';
+import { Hero } from '@/components';
 
 const {VITE_OMEDA_URL} = import.meta.env;
 const HEROES_URL = `${VITE_OMEDA_URL}/heroes.json`;

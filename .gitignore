@@ -1,3 +1,4 @@
 node_modules
 package-lock.json
 pred-client/yarn.lock
+/pred-client/.env

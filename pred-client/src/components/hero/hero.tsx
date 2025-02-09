@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { IHero } from "../../models";
+import { FC } from 'react';
+import { IHero } from '@/models';
 
 interface HeroProps {
   hero: IHero;
@@ -12,7 +12,7 @@ const Hero: FC<HeroProps> = ({hero}) => (
     <div>
       <h3 className='text-white'>{hero.display_name}</h3>
     <img 
-      className="w-32 h-32 object-cover mx-auto rounded"
+      className='w-32 h-32 object-cover mx-auto rounded'
       src={`${VITE_OMEDA_URL}${hero.image}`}
     />
     </div>

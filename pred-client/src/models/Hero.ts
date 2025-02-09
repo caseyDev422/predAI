@@ -1,5 +1,5 @@
 import { IAbility, IBaseStat } from ".";
-import { HeroClass, HeroRole } from "../enums";
+import { HeroClass, HeroRole } from "@/enums";
 
 
 export interface IHero {
