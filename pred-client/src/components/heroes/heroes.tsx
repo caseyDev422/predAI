@@ -1,19 +1,16 @@
-import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
 import { IHero } from '@/models';
 import { Hero } from '@/components';
-
-const {VITE_OMEDA_URL} = import.meta.env;
-const HEROES_URL = `${VITE_OMEDA_URL}/heroes.json`;
+import { fetchAllHeroes } from '@/api';
 
 const Heroes = () => {
   const [heroes, setHeroes] = useState<IHero[]>([]);
   
   useEffect(() => {
     const retrieveHeroes = async () => {
-      const results: AxiosResponse<IHero[]> = await axios.get(HEROES_URL);
-      console.log('results', results.data);
-      setHeroes(results.data as IHero[]);
+      const results = await fetchAllHeroes();
+      console.log('results', results);
+      setHeroes(results);
     }
     retrieveHeroes();
   }, []);

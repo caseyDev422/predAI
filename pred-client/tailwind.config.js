@@ -4,6 +4,7 @@ module.exports = {
       "./src/**/*.{js,ts,jsx,tsx}", // Adjust paths for your project structure
       "./public/index.html",
     ],
+    important: true,
     theme: {
       extend: {
         backgroundImage: {
