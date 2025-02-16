@@ -8,11 +8,12 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["./src/*"],
       "@components/*": ["src/components/index.ts"],
       "@pages/*": ["src/pages/index.ts"],
       "@models/*": ["src/models/index.ts"],
-      "@enums/*": ["src/enums/index.ts"]
+      "@enums/*": ["src/enums/index.ts"],
+      "@hooks/*": ["src/hooks/index.ts"],
     },
     /* Bundler mode */
     "moduleResolution": "bundler",

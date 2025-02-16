@@ -1,31 +1,66 @@
-import { FC } from 'react';
-import { IHero } from '@/models';
+import { FC, useState } from 'react';
+import { IHero, IHeroStats } from '@/models';
 import { getHeroStats } from '@/api';
+import { Spinner , useTooltip, Tooltip } from '@chakra-ui/react';
+import HeroContent from './HeroContent';
+import HeroStats from './HeroStats';
 
 interface HeroProps {
   hero: IHero;
+  useTooltip?: boolean;
+  includeBackground: boolean;
+  onHeroClick?: (hero:  IHero) => void;
 }
 
 const { VITE_OMEDA_URL } = import.meta.env;
 
-const Hero: FC<HeroProps> = ({ hero }) => {
-  const onHeroHover = async (hero: IHero) => {
-    console.log('hovering', hero);
-    const results = await getHeroStats([hero.id]);
-    console.log('RESULTS', results);
-  }
+const Hero: FC<HeroProps> = ({ hero, onHeroClick, includeBackground }) => {
+
+  // const onHeroClick = async (heroId: number) => {
+  //   tooltip.setOpen(true);
+  //   setLoading(true);
+  //   console.log('hero selected', hero);
+  //   const results = await getHeroStats([heroId]) as IHeroStats;
+  //   setHeroStats(results);
+  //   setLoading(false);
+  //   console.log('RESULTS', results);
+  // }
+
+  /**
+   * <Tooltip
+            interactive
+            showArrow
+            closeDelay={500}
+            content={loading ? 
+            <Spinner /> : <HeroStats {...heroStats} />
+          }
+          >
+            <span>
+              <HeroContent
+                useBackground={includeBackground}
+                imageUrl={`${VITE_OMEDA_URL}${hero.image}`}
+                hero={hero}
+                onHeroClick={onHeroClick}
+                // onHeroLeave={() => {
+                //   setHeroStats(undefined);
+                //   setCurrentHeroId(undefined);
+                // }}
+                setCurrentHeroId={setCurrentHeroId}
+              />
+            </span>
+          </Tooltip>
+   * 
+   * 
+   */
+  
   return (
     <div className='flex justify-center text-center'>
-      <div
-        className='bg-[#00000085] rounded-[5px] !pl-[10px] !pr-[10px] !pb-[16px] hover:bg-[#060014f2] hover:cursor-pointer transition-all duration-300'
-        onMouseEnter={() => onHeroHover(hero)}
-      >
-        <h3 className='text-white'>{hero.display_name}</h3>
-        <img
-          className='w-32 h-32 object-cover mx-auto rounded'
-          src={`${VITE_OMEDA_URL}${hero.image}`}
-        />
-      </div>
+      <HeroContent
+        useBackground={includeBackground}
+        imageUrl={`${VITE_OMEDA_URL}${hero.image}`}
+        hero={hero}
+        onHeroClick={onHeroClick && onHeroClick}
+      />
     </div>
   )
 }

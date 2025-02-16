@@ -13,6 +13,7 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, '/pages/index.ts'),
       '@models': path.resolve(__dirname, '/models/index.ts'),
       '@enums': path.resolve(__dirname, '/enums/index.ts'),
+      '@hooks': path.resolve(__dirname, '/hooks/index.ts'),
     }
   },
   plugins: [
